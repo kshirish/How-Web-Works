@@ -10,21 +10,7 @@
 - WHATWG is a loose, unofficial, and open collaboration of Web browser manufacturers and interested parties. The group aims to develop specifications based on HTML and related technologies to ease the deployment of interoperable Web Applications, with the intention of submitting the results to a standards organisation. This submission would then form the basis of work on formally extending HTML in the standards track.
 
 
+
 References
-- http://diveintohtml5.info/
-- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-References:
 - http://stackoverflow.com/questions/176264/what-is-the-difference-between-a-uri-a-url-and-a-urn
+- http://diveintohtml5.info/past.html
