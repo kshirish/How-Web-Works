@@ -33,7 +33,21 @@ FALLBACK:
 - For a webpage to use application cache, need to add an attribute like this `<html manifest="manifest_file.appcache">`
 - But be careful with what you cache, once a file is cached, the browser will continue to show the cached version, even if you change the file on the server. To ensure the browser updates the cache, you need to change the manifest file.
 
-### References
+### Semantics
+- `<nav>` represents a section with navigation links.
+- `<section>` represents a generic section of document/application, it can also have its own `<header>` as well as a `<footer>`. `<section>` is analogous to a section of a printed book that contains chapters or a section of a newspaper that contains news items.
+- `<article>` represents a section which can be *independently distributable or reusable*.
+- `<aside>` is intended to house *extra* content that is related to the surrounding content but at the same time is a standalone piece of content in itself.
+- `<figcaption>` defines a caption for `<figure>`.
+- `<mark>` highlights the text.
+
+
+### Recommended
+- http://www.developer.com/lang/understanding-the-proper-way-to-lay-out-a-page-with-html5.html
 - https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
 - http://www.html5rocks.com/en/tutorials/appcache/beginner/
 - http://diveintohtml5.info/detect.html
+- https://developers.whatwg.org/
+- http://diveintohtml5.info/semantics.html
+- http://www.smashingmagazine.com/2011/11/18/html5-semantics/
+- http://html5doctor.com/lets-talk-about-semantics/
