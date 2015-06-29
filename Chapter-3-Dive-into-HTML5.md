@@ -40,6 +40,7 @@ FALLBACK:
 - `<aside>` is intended to house *extra* content that is related to the surrounding content but at the same time is a standalone piece of content in itself.
 - `<figcaption>` defines a caption for `<figure>`.
 - `<mark>` highlights the text.
+- `<hgroup>` element acts as a wrapper for two or more related heading elements. What does “related” mean? It means that, taken together, they only create a single node in the document outline.
 
 
 ### Recommended
@@ -50,4 +51,3 @@ FALLBACK:
 - https://developers.whatwg.org/
 - http://diveintohtml5.info/semantics.html
 - http://www.smashingmagazine.com/2011/11/18/html5-semantics/
-- http://html5doctor.com/lets-talk-about-semantics/
