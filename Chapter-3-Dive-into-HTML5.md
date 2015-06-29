@@ -14,7 +14,26 @@
 - A web worker is a JavaScript that runs in the background, independently of other scripts, without affecting the performance of the page. You can continue to do whatever you want: clicking, selecting things, etc., while the web worker runs in the background.
 - Data is sent between workers and the main thread via a system of messages — both sides send their messages using the `postMessage()` method, and respond to messages via the `onmessage` event handler (the message is contained within the Message event's data attribute.) The data is *copied* rather than shared.
  
+### Application Cache
+- With HTML5 it has become easier now to make your web application offline accessible. You only have to serve a manifest file which turns out to be a simple text file, which tells the browser what to cache (and what to never cache).
+- Manifest file looks something like this `<html manifest="demo.appcache">`
 
+```
+CACHE MANIFEST  // cache 
+/theme.css
+/logo.gif
+/main.js
+
+NETWORK:   // never cache
+login.asp
+
+FALLBACK: 
+/html/ /offline.html
+```
+- For a webpage to use application cache, need to add an attribute like this `<html manifest="manifest_file.appcache">`
+- But be careful with what you cache, once a file is cached, the browser will continue to show the cached version, even if you change the file on the server. To ensure the browser updates the cache, you need to change the manifest file.
 
 ### References
 - https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers
+- http://www.html5rocks.com/en/tutorials/appcache/beginner/
+- http://diveintohtml5.info/detect.html
