@@ -13,7 +13,7 @@
 <html>
   <head></head>
   <body>
-    <h1 id="foo"></h1>
+    <h1 id="foo">I am your host.</h1>
     <script>
       // create shadow DOM on the <h1> element above
       var foo = document.getElementById('foo');
@@ -38,7 +38,7 @@ Usual styling methods won't get applied here i.e. it only works for main DOM tre
 <html>
   <head></head>
   <body>
-    <h1 id="foo"></h1>
+    <h1 id="foo">I am your host.</h1>
     
     <template id="shadowTemplate">
     
@@ -65,3 +65,75 @@ Usual styling methods won't get applied here i.e. it only works for main DOM tre
   </body>
 </html>
 ```
+
+## Content vs implementation
+
+HTML elements are compositional — you can put a button inside a table, for example. Till now, only shadow DOM is deciding the content of shadow host but we can do better. 
+
+```html
+<html>
+  <head></head>
+  <body>
+    <h1 id="foo">I am your host.</h1>
+    
+    <template id="shadowTemplate">
+    
+      <style>
+        ...
+      </style>
+      
+      <!--  Content of shadow host will be injected here. -->
+      <content></content>
+      <h2>I am your shadow.</h2>
+      <h3>me too.</h3>
+      <h4>me tooo.</h4>
+      <h5>me toooo.</h5>  
+      
+    </template>
+    <script>
+      ... 
+    </script>
+  </body>
+</html>
+```
+
+- As soon as the shadow host's content changes, shadow DOM will be updated automatically. 
+- By separating content and presentation, we can simplify the code that manipulates the content i.e. now we only need to deal with a simple structure containing one `<h1>` instead of several other tags.
+
+
+## Advance `<content>`
+
+```html
+<h1 id="foo">
+    <p>bald and fat.</p>
+    <i>30 years old.</i>
+    <div class="warning">I am the future.</div>    
+</h1>
+<template id="shadowTemplate">
+    
+<style>
+    h2 {color: red;}
+    h3 {color: green;}
+    h4 {color: yellow;}
+    h5 {color: orange;}    
+</style>
+    
+  <div style="color: red;">
+    <content select=".warning"></content>
+  </div>
+    
+  <div style="color: blue;">
+    <content select="i"></content>
+  </div>
+    
+  <div style="color: yellow;">
+    <content select="p"></content>
+  </div>
+    
+
+<h3>me too.</h3>
+<h4>me tooo.</h4>
+<h5>me toooo.</h5>    
+</template>
+```
+
