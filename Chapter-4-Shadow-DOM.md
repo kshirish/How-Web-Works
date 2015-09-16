@@ -26,11 +26,17 @@
 
 ## Styling shadow DOM
 
-Usual styling methods won't get applied here i.e. it only works for main DOM tree but not for shadow trees. For it, we can do something like :
+- By default usual styling won't get applied here i.e. it only works for main DOM tree but not for shadow trees. For it, we can do something like
 
 ```js
     shadow.innerHTML = '<style>p {color: red;}</style>';
 ```
+ - Still you want to apply normal styles to your shadow DOM as well, you can do like
+ 
+ ```js
+    shadow.applyAuthorStyles = true;
+ ```
+ 
 
 ## Better road with `<template>` 
 
