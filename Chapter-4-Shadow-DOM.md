@@ -29,15 +29,18 @@
 - By default usual styling won't get applied here i.e. it only works for main DOM tree but not for shadow trees. For it, we can do something like
 
 ```js
-    shadow.innerHTML = '<style>p {color: red;}</style>';
+    shadow.innerHTML = '<style>p { color: red; }</style>';
 ```
  - Still you want to apply normal styles to your shadow DOM as well, you can do like
  
  ```js
     shadow.applyAuthorStyles = true;
  ```
- 
-
+ - `:host` allows you to select and style the element hosting a shadow tree. More on [styles](http://www.html5rocks.com/en/tutorials/webcomponents/shadowdom-201/)
+  
+```js
+  shadow.innerHTML = '<style>:host { text-transform: uppercase; }</style>';
+```
 ## Better road with `<template>` 
 
 ```html
@@ -143,3 +146,36 @@ HTML elements are compositional — you can put a button inside a table, for exa
 </template>
 ```
 
+## Mutiple shadow DOMs
+
+- Obviously later one will replace previous one.
+```html
+  <div id="foo">I am your host.</div>
+  <script>
+    var foo = document.getElementById('foo');
+    var root1 = foo.createShadowRoot();
+    var root2 = foo.createShadowRoot();
+    root1.innerHTML = '<div>Root 1</div>';
+    root2.innerHTML = '<div>Root 2</div>';
+  </script>
+```
+- **Shadow insertion points** (`<shadow>`) are similar to normal insertion points (`<content>`) in that they're placeholders. However, instead of being placeholders for a host's content, they're hosts for other shadow trees.
+```html
+  <div id="foo">I am your host.</div>
+  <script>
+    var foo = document.getElementById('foo');
+    var root1 = container.createShadowRoot();
+    var root2 = container.createShadowRoot();
+    root1.innerHTML = '<div>Root 1</div><content></content>';
+    root2.innerHTML = '<div>Root 2</div><shadow></shadow>';
+  </script>
+```
+- Reference to previous tree
+```js
+  root2.olderShadowRoot === root1;   //true
+```
+- Obtaining a shadow root
+```js
+  var root = host.createShadowRoot();
+  host.shadowRoot === root; // true
+```
